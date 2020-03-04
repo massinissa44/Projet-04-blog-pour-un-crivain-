@@ -1,14 +1,14 @@
 <?php
-
-
 class Chapters {
-
+    //public static $bddtmp = $bdd;
     public $bdd;
     public $id;
+    public $chapter_number;
     public $content;
     public $title;
     public $createdDate;
     public $description;
+    
 
     public function __construct($bdd) {
         $this->bdd = $bdd;
@@ -22,15 +22,30 @@ class Chapters {
        return $listChapters;
     }
 
-    //déja utilisé
-    public function createChapter($title, $description, $content) {
-        // execute requete
-        $requete = $this->bdd->prepare('INSERT INTO chapters (title, content, description) VALUES(?, ?, ?)');
-        $requete->execute(array($title, $content, $description));
+    public function isUniqueNumber($chapter_number) {
+        $query = 'SELECT * FROM chapters WHERE chapter_number = '.$chapter_number;
+        $reponse =  $this->bdd->query($query); 
+        $datas = $reponse->fetchAll();
+        return $datas;
     }
 
-    public function updateChapter($id, $title, $description, $content) {
+    public function findOneChapter($id) {   
+        $query = 'SELECT * FROM chapters WHERE id = '.$id;     
+        $reponse =  $this->bdd->query($query); 
+        $datas = $reponse->fetchAll();
+        return $datas;
+    }
+
+    //déja utilisé
+    public function createChapter($title, $chapter_number, $description, $content) {
+        // execute requete
+        $requete = $this->bdd->prepare('INSERT INTO chapters (title, chapter_number, content, description) VALUES(?, ?, ?, ?)');
+        $requete->execute(array($title, $chapter_number, $content, $description));
+    }
+
+    public function updateChapter($id, $title, $chapter_number, $description, $content) {
         $sql = "UPDATE chapters SET `title`='$title',
+            chapter_number = '$chapter_number',
             description = '$description',
             content = '$content'
             WHERE id='$id'";

@@ -14,23 +14,35 @@ class ChapterController
     public static function UpdateChapter ($bdd)
     {
             $id = $_POST["id"];
-            $title = $_POST["title"];
+            $chapter_number = $_POST["chapter_number"];
+            $title = $_POST["title"];         
             $description = $_POST["description"];
             $content = $_POST["content"];
-            $Chapter = new Chapters($bdd);
-            $Chapter->updateChapter($id, $title, $description, $content);
 
+            $Chapter = new Chapters($bdd);
+            $Chapter->updateChapter($id, $title, $chapter_number, $description, $content);
     }
 
     public static function CreateChapter ($bdd)
     {
+        $chapter_number = $_POST["chapter_number"];
         $title = $_POST["title"];
         $description = $_POST["description"];
-        $content = $_POST["content"];
+        $content = $_POST["content"];    
 
         $chapters = new Chapters($bdd);
-        $chapters->createChapter($title, $description, $content);
+        $chapters->createChapter($title, $chapter_number, $description, $content);
+    }
 
+    public static function IsUniqueNumber($bdd)
+    {
+        $chapters = new Chapters($bdd);
+        return $chapters->isUniqueNumber($chapter_number);
+    }
+
+    public static function ReadOneChapter($bdd, $id){    
+        $chapters = new Chapters($bdd);
+        return $chapters->findOneChapter($id);
     }
 
     public static function ReadChapter ($bdd)
