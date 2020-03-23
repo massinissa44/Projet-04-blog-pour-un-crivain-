@@ -2,11 +2,10 @@
 session_start();
 include_once __DIR__ . '/../controller/ChapterController.php';
 //récupération de notre header
-include 'pages/head.php';
+include_once 'pages/head.php';
 
 // récupération du body
-include 'pages/body.php';
+include_once 'pages/body.php';
 
-include 'pages/footer.html';
+include_once 'pages/footer.html';
 
-?>

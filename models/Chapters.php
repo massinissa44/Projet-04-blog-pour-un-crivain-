@@ -22,6 +22,19 @@ class Chapters {
        return $listChapters;
     }
 
+    public function listChapterComments() {
+        // vérifier si l'id existe
+        // execute la requete sql qui liste les commentaires liés à $this->id
+        "SELECT * FROM comments WHERE id_chapter = $this->id";
+    }
+
+    public function listeChapterComments($id) {
+        $query = "SELECT * FROM  comments WHERE id_chapter = $id";      
+        $reponse =  $this->bdd->query($query);   
+        $listeChapterComments = $reponse->fetchAll();
+        return $listeChapterComments;       
+    }
+
     public function isUniqueNumber($chapter_number) {
         $query = 'SELECT * FROM chapters WHERE chapter_number = '.$chapter_number;
         $reponse =  $this->bdd->query($query); 
@@ -43,6 +56,7 @@ class Chapters {
         $requete->execute(array($title, $chapter_number, $content, $description));
     }
 
+
     public function updateChapter($id, $title, $chapter_number, $description, $content) {
         $sql = "UPDATE chapters SET `title`='$title',
             chapter_number = '$chapter_number',
@@ -59,12 +73,6 @@ class Chapters {
     public function deleteChapter($id) {
         $query = "DELETE FROM chapters WHERE id=". $id;
         $this->bdd->exec($query);
-    }
-
-    public function listChapterComments() {
-        // vérifier si l'id existe
-        // execute la requete sql qui liste les commentaires liés à $this->id
-        "SELECT * FROM comments WHERE id_chapter = $this->id";
     }
 }
 

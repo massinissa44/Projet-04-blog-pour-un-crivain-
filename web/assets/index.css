@@ -1,12 +1,187 @@
 .background_picture {
     width: 100%;
 }
+
+/*update.php*/
+
 .hide {
     display: none;
 }
 
-.forms_update 
+.hiden {
+    display: none;
+}
+
+.jumbotron .forms_update 
 {
     color: white;
     margin-top: 20px;
+    background-color: rgb(127, 128, 126);
+}
+
+.jumbotron {
+    background-color: rgb(72, 72, 72); 
+    color: white;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 0; 
+}
+
+.form {
+    width: 60%; 
+    margin: auto; 
+    margin-top: 50px;
+}
+
+.display-3 {
+    text-align: center; 
+    color: seagreen;
+}
+
+.card-header{
+    color: black;
+}
+
+.card-body {
+    display: flex;
+    justify-content: space-between;  
+}
+
+.card_comment {
+    width: 100%;
+    margin: auto;
+}
+
+.fa-flag {
+    color: red;
+}
+
+.carde {
+    margin: auto;
+    margin-top: 20px;
+}
+
+.card-header {
+    display: flex;
+    flex-direction: column;
+    line-height: 0;
+    background-color: rgb(230, 230, 230);
+}
+
+.card-body {
+    background-color: white;
+}
+
+.date {
+    font-size: 10px;
+}
+
+.title_comment {
+    font-size: 32px;
+}
+
+.comment-delete {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/*create.php*/
+
+.display-3 {
+    text-align: center;
+    color: seagreen;
+}
+
+.jumbotron {
+    background-color: rgb(72, 72, 72);
+    color: white
+}
+
+.creat_chapter{
+    width: 60%; 
+    margin: auto; 
+    margin-top: 50px;
+}
+
+.btn_comment {
+    margin-top: 20px;
+}
+
+.btn_update {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.massi {
+    display: flex;
+}
+
+/*chapter_view*/
+
+.number_chapter{
+    font-size: 20px;
+}
+
+.name_chapter {
+    font-size: 20px;
+}
+
+/*body*/
+
+.card-img {
+    box-shadow: 2px 2px 5px #515c53;
+}
+
+.content {
+    margin-top: 50px;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.item {
+    text-align: justify;
+}
+
+.fa-edit {
+    color: rgb(72, 126, 226);
+    cursor: pointer;
+}
+
+.lead {
+    text-align: center;
+}
+
+/*footer*/
+
+.page-footer {
+    margin-top: 150px;
+}
+
+.container-fluid {
+    background-color: rgb(38, 50, 56); 
+    color: white; 
+    padding-top: 15px;
+}
+
+.text-uppercase {
+    font-family: Comic Sans MS, cursive, sans-serif; 
+    font-size: medium;
+}
+
+.footer_text{
+    font-size: small;
+}
+
+.fa-envelope, .text-uppercase {
+    color: seagreen;   
+}
+
+.footer-copyright {
+    background-color: rgb(30, 40, 45);
+}
+
+.footer-copyright p {
+    text-align: center; 
+    color: grey;
 }

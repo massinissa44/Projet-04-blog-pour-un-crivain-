@@ -1,46 +1,92 @@
-
+    <script>
+        tinymce.init({
+        selector: '#mytextarea'
+        });
+   </script>
     <?php
         $id = $_GET["id"];
         $dataChapter = ChapterController::ReadOneChapter($bdd, $id);
+        $dataComment = ChapterController::ReadComment($bdd);
+        $dataCommentChapters = ChapterController::RedChapterComments($bdd, $id);
     ?>
       
     <?php
     foreach ($dataChapter as $data)
         {
         ?>
-        <div class="jumbotron" style=" background-color: rgb(72, 72, 72); color: white">
-            <h2 class="display-3" style="text-align: center; color: seagreen;"><?= $data['title'];?></h2>
+        <div class="jumbotron">
+            <h2 class="display-3"><?= $data['title'];?></h2>
             <p class="lead"><?= $data['content'];?></p>
+            <i class="fas fa-edit fa-2x btn_update" title="Modifier"></i>
             <hr class="my-4">
-            <div class="lead">
-            <button type="submit" class="btn btn-primary btn_update">Modifier</button>
         </div>
-        <div class="jumbotron forms_update hide" style= "background-color: rgb(127, 128, 126); ">
-                <form method="POST" action="" style="width: 60%; margin: auto; margin-top: 50px;">
-                    <div class="form-group">
-                        <input value ="<?= $id;?>" type="hidden" name="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Nom du chapitre</label>
-                        <input value ="<?= $data['title'];?>" type="text" name="title" class="form-control" id="exampleInputEmail1">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Numéro du chapitre</label>
-                        <input value = "<?= $data['chapter_number'];?>" type="number" name="chapter_number" class="form-control" id="exampleInputEmail1">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Description</label>
-                        <input value ="<?= $data['description'];?>" type="text" name="description" class="form-control" id="exampleTextarea">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleTextarea">Contenu</label>
-                        <textarea  name="content" class="form-control" id="exampleTextarea" rows="8"><?= $data['content'];?></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Mettre a jour</button> 
-                </form> </br>
+        <div class="jumbotron forms_update hide">
+            <form method="POST" action="" class="form">
+                <div class="form-group">
+                    <input value ="<?= $id;?>" type="hidden" name="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nom du chapitre</label>
+                    <input value ="<?= $data['title'];?>" type="text" name="title" class="form-control" id="exampleInputEmail1">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Numéro du chapitre</label>
+                    <input value = "<?= $data['chapter_number'];?>" type="number" name="chapter_number" class="form-control" id="exampleInputEmail1">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Description</label>
+                    <input value ="<?= $data['description'];?>" type="text" name="description" class="form-control" id="exampleTextarea">
+                </div>
+                <div class="form-group">
+                    <label for="exampleTextarea">Contenu</label>
+                    <textarea id="mytextarea" name="content" class="form-control" id="exampleTextarea" rows="8"><?= $data['content'];?></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Mettre a jour</button> 
+            </form> </br>
             <?php }
             ?>  
-            </div>
         </div>
-        <script src="assets/index.js"></script>   
+    <div class="jumbotron card_comment">
+        <h4 class="display-3 title_comment" id="ancre3">Liste des commentaires</h4>
+        <?php
+        foreach ($dataCommentChapters as $datas)
+            {
+            ?>
+            <div class="carde border-light mb-3">
+                <div class="card-header">
+                    <h5><?= $datas['title_comment'];?></h5>
+                    <p class="text-secondary date"><?= $datas['created_date'];?></p>
+                </div>
+                <div class="card-body text-secondary">
+                    <p class="card-text"><?= $datas['content_comment'];?></p>
+                    <div class="icons"> 
+                        <a href=index.php?p=delet-comment&id=<?=$datas['id']?>>
+                            <i class="far fa-trash-alt" title="Supprimer"></i></a>
+                        <a href=>
+                            <i class="fas fa-flag" title="Signaler"></i></a>   
+                    </div>
+                </div>
+                <?php }
+                ?>        
+                <button class="btn btn-primary btn_comment">Ajouter un commentaire</button>
+            </div>
+            <div class="carde border-light mb-3 forms_comment hiden">
+                <form method="POST" action="" class="form">
+                    <div class="form-group">
+                        <input type="hidden" name="id_chapter" value="<?=$id?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Titre</label>
+                        <input type="text" name="title_comment" class="form-control" id="exampleInputEmail1">
+                     </div>
+                    <div class="form-group">
+                        <label for="exampleTextarea">Commentaire</label>
+                        <textarea  name="content_comment" class="form-control" id="exampleTextarea" rows="8"></textarea>
+                    </div>
+                    <button type="submit" #ancre1 class="btn btn-primary">Commenter</button>
+                </form>   
+            </div>
+            </div>           
+    </div>       
+<script src="assets/index.js"></script>   
 

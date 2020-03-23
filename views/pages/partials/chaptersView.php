@@ -10,18 +10,18 @@ foreach ($listChapters as $listChapter)
     <tbody>							
         <tr>
             <td id="ancre2">
-               <a href=index.php?p=update&id=<?=$listChapter['id']?>#ancre1 style="text-decoration: none; color: rgb(200, 203, 194); font-size: 20px;">
-                   <strong>Chapitre<?=$listChapter ['chapter_number'] ?>:</strong>
+               <a href=index.php?p=update&id=<?=$listChapter['id']?>#ancre1 class="number_chapter" style="text-decoration: none; color: rgb(200, 203, 194);">
+                   <strong>Chapitre<?=$listChapter ['chapter_number']?>:</strong>
                </a>
             </td>
             <td>
-               <a href=index.php?p=update&id=<?=$listChapter['id']?>#ancre1 style="text-decoration: none; color: rgb(188, 212, 145  ); font-size: 20px;">
-                   <strong><?=$listChapter['title']?></strong>
+               <a href=index.php?p=update&id=<?=$listChapter['id']?>#ancre1 class="name_chapter" style="text-decoration: none; color: rgb(188, 212, 145);">
+                   <strong><?= htmlspecialchars ($listChapter['title'])?></strong>
                </a>
             </td>
             <td>
-               <a href=index.php?p=delet&id=<?=$listChapter['id']?> class="btn btn-danger btn-md">
-                <span class="glyphicon glyphicon-edit"></span>Supprimer</a>
+               <a href=index.php?p=delet&id=<?=$listChapter['id']?>>
+                <i class="far fa-trash-alt" title="Supprimer"></i></a>
             </td>
         </tr>
     </tbody>
