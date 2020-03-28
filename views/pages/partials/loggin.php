@@ -1,15 +1,12 @@
 <?php 
-  $result = ChapterController::Login($_POST['username'], $_POST['password']);
+  $result = ChapterController::Loggin($_POST['username'], $_POST['password']);
   
   /*/$dataOneUser = ChapterController::ReadOneLogin($bdd);/*/
 
   if ( (isset($_POST['username']) && !empty($_POST["username"])) && (isset($_POST['username']) && !empty($_POST["username"])) ){
 
-    header("Location: Location:index.php?p=home#ancre2");
-  
-    
-}    
-  
+    header("Location: Location:index.php?p=home#ancre2");   
+}      
 ?>
 
 <div class="wrapper fadeInDown" id="ancre4">

@@ -5,22 +5,10 @@ ob_start();
 
 require_once __DIR__ . '/../config/db.php';
 
-require_once __DIR__ . 'initcontroller.php';
+require_once __DIR__ . '../controller/initcontroller.php';
 
 include_once __DIR__.'/../views/layout.php';
 
-require_once __DIR__ . 'endtcontroller.php';
+require_once __DIR__ . '../controller/endcontroller.php';
 
 ob_end_flush();
-
-
-/*
-ob_start();
-if($p=== 'Home') {
-    require '../views/pages/Home.php';
-}elseif ($p === 'Chapter') {
-    require '../views/pages/Chapter.php';
-}
-$content = ob_get_clean();
-
-*/

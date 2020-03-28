@@ -19,7 +19,6 @@ class ChapterController
         $description = $_POST["description"];
         $content = $_POST["content"];    
         
-
         $chapters = new Chapters($bdd);
         $chapters->createChapter($title, $chapter_number, $description, $content);
     }
@@ -64,9 +63,8 @@ class ChapterController
         return $chaptercomments->listChapterComments();
     }
 
-    public static function Login($username,$password)
-    {
-        
+    public static function Loggin($username,$password)
+    {   
         if($result['error']= false) {
             header('Location:index.php?p=home#ancre2');
         }
@@ -74,8 +72,6 @@ class ChapterController
             return($result);
         }
     }
-
-    
 
     /* --Update-- */
     public static function UpdateChapter ($bdd)
