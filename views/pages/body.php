@@ -45,7 +45,17 @@
                 <span class="glyphicon glyphicon-edit"></span>Ajouter un nouveau chapitre</a>
             <?php 
         }
-        
+
+        if($_GET["p"] === "login") {
+            include 'partials/login.php';
+            ?>
+            <style>
+                .content {
+                    display: none;
+                }
+            </style>
+            <?php
+        }
         elseif ($_GET["p"] === "create") {
             include 'partials/Create.php';
             if(isset($_POST["title"]) && !empty($_POST["title"])){

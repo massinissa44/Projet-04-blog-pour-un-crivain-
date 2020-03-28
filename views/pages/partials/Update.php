@@ -85,8 +85,7 @@
                     </div>
                     <button type="submit" #ancre1 class="btn btn-primary">Commenter</button>
                 </form>   
-            </div>
-            </div>           
+            </div>              
     </div>       
 <script src="assets/index.js"></script>   
 

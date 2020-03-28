@@ -7,6 +7,7 @@
 // récupération de données via le model
 require __DIR__.'/../models/Chapters.php';
 require __DIR__.'/../models/Comments.php';
+require __DIR__.'/../models/Auth.php';
 
 class ChapterController
 {
@@ -62,6 +63,19 @@ class ChapterController
         $chaptercomments = new Chapters($bdd);
         return $chaptercomments->listChapterComments();
     }
+
+    public static function Login($username,$password)
+    {
+        
+        if($result['error']= false) {
+            header('Location:index.php?p=home#ancre2');
+        }
+        else{
+            return($result);
+        }
+    }
+
+    
 
     /* --Update-- */
     public static function UpdateChapter ($bdd)

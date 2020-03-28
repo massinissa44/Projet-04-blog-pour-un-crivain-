@@ -8,7 +8,6 @@ class Chapters {
     public $title;
     public $createdDate;
     public $description;
-    
 
     public function __construct($bdd) {
         $this->bdd = $bdd;
@@ -48,7 +47,7 @@ class Chapters {
         $datas = $reponse->fetchAll();
         return $datas;
     }
-
+    
     //déja utilisé
     public function createChapter($title, $chapter_number, $description, $content) {
         // execute requete
