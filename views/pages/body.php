@@ -46,8 +46,8 @@
             <?php 
         }
 
-        if($_GET["p"] === "login") {
-            include 'partials/login.php';
+        if($_GET["p"] === "loggin") {
+            include 'partials/loggin.php';
             ?>
             <style>
                 .content {
@@ -55,6 +55,15 @@
                 }
             </style>
             <?php
+             if(isset($_POST["username"]) && !empty($_POST["username"])){
+                ChapterController::Loggin($bdd);
+                header("Location: {$_SERVER['HTTP_REFERER']}");
+                }
+                
+                elseif (isset($_POST['content_comment']) && !empty($_POST["content_comment"])) {
+                    ChapterController::CreateComment($bdd);
+                    header("Location: {$_SERVER['HTTP_REFERER']}");
+                }
         }
         elseif ($_GET["p"] === "create") {
             include 'partials/Create.php';
@@ -88,7 +97,7 @@
                 ChapterController::CreateComment($bdd);
                 header("Location: {$_SERVER['HTTP_REFERER']}");
             }    
-        }                         
+        }
         ?>
     </div>                  
 </body>

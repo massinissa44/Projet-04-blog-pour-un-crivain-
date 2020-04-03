@@ -1,27 +1,20 @@
 <?php 
-  $result = ChapterController::Loggin($_POST['username'], $_POST['password']);
-  
-  /*/$dataOneUser = ChapterController::ReadOneLogin($bdd);/*/
-
-  if ( (isset($_POST['username']) && !empty($_POST["username"])) && (isset($_POST['username']) && !empty($_POST["username"])) ){
-
-    header("Location: Location:index.php?p=home#ancre2");   
+  if ((isset($_POST['username']) && !empty($_POST["username"])) && (isset($_POST['password']) && !empty($_POST["password"])) ){
+    $result = ChapterController::Loggin($_POST["username"], $_POST["password"]);
+    if(!$result['error']){
+      
+      header("Location:index.php?p=home#ancre2"); 
+      exit;
+    }     
 }      
 ?>
 
 <div class="wrapper fadeInDown" id="ancre4">
   <div id="formContent">
-    <!-- Tabs Titles -->
-
-    <!-- Icon -->
-    <div class="fadeIn first">
-      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
-    </div>
-
     <!-- Login Form -->
-    <form action="" method="POST">
-      <input type="text" id="login" class="fadeIn second" name="username" placeholder="Username">
-      <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password">
+    <form action="" method="POST" style='margin-top: 40px'>
+      <input type="text" id="login" class="fadeIn second inpt" name="username" placeholder="Username">
+      <input type="text" id="password" class="fadeIn third inpt" name="password" placeholder="Password">
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
 

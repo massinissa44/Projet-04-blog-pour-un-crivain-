@@ -65,12 +65,8 @@ class ChapterController
 
     public static function Loggin($username,$password)
     {   
-        if($result['error']= false) {
-            header('Location:index.php?p=home#ancre2');
-        }
-        else{
-            return($result);
-        }
+        $Auth = new Auth();
+        return $Auth->loggin($username,$password);
     }
 
     /* --Update-- */
