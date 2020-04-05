@@ -38,15 +38,15 @@
             exit;
         }
         
-        if($_GET["p"] ==="home") {
+        elseif($_GET["p"] ==="home") {
                 include 'partials/chaptersView.php';
             ?>
             <a href="index.php?p=create#ancre1" class="btn btn-outline-secondary btn-md">
                 <span class="glyphicon glyphicon-edit"></span>Ajouter un nouveau chapitre</a>
             <?php 
         }
-
-        if($_GET["p"] === "loggin") {
+        
+        elseif($_GET["p"] === "loggin") {
             include 'partials/loggin.php';
             ?>
             <style>

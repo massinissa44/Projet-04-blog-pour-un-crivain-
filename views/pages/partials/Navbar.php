@@ -1,5 +1,7 @@
-
-
+<?php
+    $resultIn = ChapterController::IsLoggedIn();
+    $resultOut = ChapterController::IsLoggedOut();
+?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="index.php?p=home">Blog Jean Forteroche</a>
@@ -16,7 +18,15 @@
                 <a class="nav-link" href="#">Reported Coms</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.php?p=loggin#ancre4">Login</a>
+                <?php if(!$resultIn){?>
+                    <a class="nav-link" href="index.php?p=loggin#ancre4">Login</a>
+                <?php
+                    }
+                    
+                 else{?>
+                    <a class="nav-link" href="index.php?p=loggout#ancre4">LogOut</a>
+                <?php
+                }?>    
             </li>
         </ul>
     </div>

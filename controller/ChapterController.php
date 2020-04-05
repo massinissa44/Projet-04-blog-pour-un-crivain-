@@ -69,6 +69,18 @@ class ChapterController
         return $Auth->loggin($username,$password);
     }
 
+    public static function IsLoggedIn()
+    {
+        $AuthIn = new Auth();
+        return $AuthIn->isLoggedIn();
+    }
+
+    public static function IsLoggedOut()
+    {
+        $AuthOut = new Auth();
+        return $AuthOut->isLoggedOut();
+    }
+
     /* --Update-- */
     public static function UpdateChapter ($bdd)
     {

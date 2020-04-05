@@ -9,6 +9,6 @@
     <link rel="stylesheet" href="assets/index.css"/>
 </head>
 <?php
-include 'partials/navbar.html';
+include 'partials/Navbar.php';
 
 

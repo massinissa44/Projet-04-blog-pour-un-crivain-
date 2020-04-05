@@ -5,14 +5,17 @@
       
       header("Location:index.php?p=home#ancre2"); 
       exit;
-    }     
-}      
-?>
-
+    } 
+    if($result && $result['error']){?> 
+      <div class="alert alert-danger" role="alert">    
+          <p><?= $result['message'];?></p>   
+      </div> 
+<?php }}?>
+       
 <div class="wrapper fadeInDown" id="ancre4">
   <div id="formContent">
     <!-- Login Form -->
-    <form action="" method="POST" style='margin-top: 40px'>
+    <form action="" method="POST" style='margin-top: 40px'> 
       <input type="text" id="login" class="fadeIn second inpt" name="username" placeholder="Username">
       <input type="text" id="password" class="fadeIn third inpt" name="password" placeholder="Password">
       <input type="submit" class="fadeIn fourth" value="Log In">
