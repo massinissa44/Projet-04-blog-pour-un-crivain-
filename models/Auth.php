@@ -25,7 +25,7 @@ class Auth {
       }
       else{
         $result['error'] = true;
-        $result['message'] = 'lidentifiant ou le mot de passe est incorrecte';
+        $result['message'] = 'identifiant ou mot de passe incorrect';
       }
       
       return $result;

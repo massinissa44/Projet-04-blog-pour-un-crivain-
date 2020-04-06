@@ -55,16 +55,18 @@
                 }
             </style>
             <?php
-             if(isset($_POST["username"]) && !empty($_POST["username"])){
-                ChapterController::Loggin($bdd);
-                header("Location: {$_SERVER['HTTP_REFERER']}");
-                }
-                
-                elseif (isset($_POST['content_comment']) && !empty($_POST["content_comment"])) {
-                    ChapterController::CreateComment($bdd);
-                    header("Location: {$_SERVER['HTTP_REFERER']}");
-                }
         }
+        /*if(isset($_POST["username"]) && !empty($_POST["username"])){
+            ChapterController::Loggin($_POST["username"], $_POST["password"]);
+            header("Location: {$_SERVER['HTTP_REFERER']}");
+        }
+        
+        elseif (isset($_POST['content_comment']) && !empty($_POST["content_comment"])) {
+            ChapterController::CreateComment($bdd);
+            header("Location: {$_SERVER['HTTP_REFERER']}");
+        }*/
+
+        
         elseif ($_GET["p"] === "create") {
             include 'partials/Create.php';
             if(isset($_POST["title"]) && !empty($_POST["title"])){

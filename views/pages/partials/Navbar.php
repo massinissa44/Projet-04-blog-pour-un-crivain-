@@ -1,5 +1,5 @@
 <?php
-    $resultIn = ChapterController::IsLoggedIn();
+    $isLogedIn = ChapterController::IsLoggedIn();
     $resultOut = ChapterController::IsLoggedOut();
 ?>
 
@@ -18,11 +18,10 @@
                 <a class="nav-link" href="#">Reported Coms</a>
             </li>
             <li class="nav-item">
-                <?php if(!$resultIn){?>
+                <?php if(!$isLogedIn){?>      
                     <a class="nav-link" href="index.php?p=loggin#ancre4">Login</a>
                 <?php
-                    }
-                    
+                    }   
                  else{?>
                     <a class="nav-link" href="index.php?p=loggout#ancre4">LogOut</a>
                 <?php

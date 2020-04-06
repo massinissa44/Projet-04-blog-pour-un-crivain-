@@ -1,5 +1,4 @@
 <?php
-session_start();
 include_once __DIR__ . '/../controller/ChapterController.php';
 
 //récupération de notre header

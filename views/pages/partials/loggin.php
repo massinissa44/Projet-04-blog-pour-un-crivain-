@@ -1,14 +1,14 @@
 <?php 
   if ((isset($_POST['username']) && !empty($_POST["username"])) && (isset($_POST['password']) && !empty($_POST["password"])) ){
     $result = ChapterController::Loggin($_POST["username"], $_POST["password"]);
-    if(!$result['error']){
-      
+    if(!$result['error']){ 
       header("Location:index.php?p=home#ancre2"); 
       exit;
     } 
-    if($result && $result['error']){?> 
+    
+    if($result && $result['error']){ ?>
       <div class="alert alert-danger" role="alert">    
-          <p><?= $result['message'];?></p>   
+          <p><?=$result['message'];?></p>   
       </div> 
 <?php }}?>
        
@@ -25,6 +25,5 @@
     <div id="formFooter">
       <a class="underlineHover" href="#">Forgot Password?</a>
     </div>
-
   </div>
 </div>
