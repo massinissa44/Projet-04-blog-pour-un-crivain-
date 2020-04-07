@@ -7,7 +7,6 @@
 // récupération de données via le model
 require __DIR__.'/../models/Chapters.php';
 require __DIR__.'/../models/Comments.php';
-require __DIR__.'/../models/Auth.php';
 
 class ChapterController
 {
@@ -64,22 +63,11 @@ class ChapterController
     }
 
     public static function Loggin($username,$password)
-    {   
-        $Auth = new Auth();
+    {    
+        global $Auth; 
         return $Auth->loggin($username,$password);
     }
 
-    public static function IsLoggedIn()
-    {
-        $AuthIn = new Auth();
-        return $AuthIn->isLoggedIn();
-    }
-
-    public static function IsLoggedOut()
-    {
-        $AuthOut = new Auth();
-        return $AuthOut->isLoggedOut();
-    }
 
     /* --Update-- */
     public static function UpdateChapter ($bdd)
@@ -110,7 +98,7 @@ class ChapterController
     public static function IsUniqueNumber($bdd)
     {
         $chapters = new Chapters($bdd);
-        return $chapters->isUniqueNumber($chapter_number);
+        return $chapters->isUniqueNumber();
     }
 }
 

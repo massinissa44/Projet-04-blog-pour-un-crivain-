@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nom du chapitre</label>
-                    <input value ="<?= $data['title'];?>" type="text" name="title" class="form-control" id="exampleInputEmail1">
+                    <input value ="<?= htmlspecialchars ($data['title']);?>" type="text" name="title" class="form-control" id="exampleInputEmail1">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Numéro du chapitre</label>
@@ -35,11 +35,11 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Description</label>
-                    <input value ="<?= $data['description'];?>" type="text" name="description" class="form-control" id="exampleTextarea">
+                    <input value ="<?= htmlspecialchars ($data['description']);?>" type="text" name="description" class="form-control" id="exampleTextarea">
                 </div>
                 <div class="form-group">
                     <label for="exampleTextarea">Contenu</label>
-                    <textarea id="mytextarea" name="content" class="form-control" id="exampleTextarea" rows="8"><?= $data['content'];?></textarea>
+                    <textarea id="mytextarea" name="content" class="form-control" id="exampleTextarea" rows="8"><?= htmlspecialchars ($data['content']);?></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Mettre a jour</button> 
             </form> </br>
@@ -54,11 +54,11 @@
             ?>
             <div class="carde border-light mb-3">
                 <div class="card-header">
-                    <h5><?= $datas['title_comment'];?></h5>
+                    <h5><?= htmlspecialchars ($datas['title_comment']);?></h5>
                     <p class="text-secondary date"><?= $datas['created_date'];?></p>
                 </div>
                 <div class="card-body text-secondary">
-                    <p class="card-text"><?= $datas['content_comment'];?></p>
+                    <p class="card-text"><?= htmlspecialchars ($datas['content_comment']);?></p>
                     <div class="icons"> 
                         <a href=index.php?p=delet-comment&id=<?=$datas['id']?>>
                             <i class="far fa-trash-alt" title="Supprimer"></i></a>

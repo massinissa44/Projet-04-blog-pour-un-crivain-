@@ -1,6 +1,5 @@
 <?php
-    $isLogedIn = ChapterController::IsLoggedIn();
-    $resultOut = ChapterController::IsLoggedOut();
+      
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -18,7 +17,7 @@
                 <a class="nav-link" href="#">Reported Coms</a>
             </li>
             <li class="nav-item">
-                <?php if(!$isLogedIn){?>      
+                <?php  if(!$Auth->isLogedIn()){?>      
                     <a class="nav-link" href="index.php?p=loggin#ancre4">Login</a>
                 <?php
                     }   

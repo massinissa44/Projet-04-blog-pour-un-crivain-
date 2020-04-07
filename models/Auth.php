@@ -4,14 +4,13 @@ class Auth {
     
     private $username = 'admin';
     private $password = 'forteroche2020';
-    private $logged;
+    private $logged = false;
 
-    public function setLogged($logged) {
-      $this->logged = $_SESSION['logged'] || false;
-    }
-
-    public function getLogged() {
-      return $this->logged;
+    public function __construct() {
+      if (!empty($_SESSION['logged'])) {
+        $this->logged = (bool) $_SESSION['logged'];
+      }
+      
     }
 
     public function loggin($username,$password) {
@@ -31,11 +30,11 @@ class Auth {
       return $result;
     }
 
-    public function isLoggedIn() {
+    public function isLogedIn() {
       return $this->logged;
     }
 
-    public function isLoggedOut() {
+    public function isLogedOut() {
       $_SESSION['logged'] = false;
       $this->logged = false;
     }

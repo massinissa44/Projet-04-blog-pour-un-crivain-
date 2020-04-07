@@ -34,11 +34,12 @@ class Chapters {
         return $listeChapterComments;       
     }
 
-    public function isUniqueNumber($chapter_number) {
-        $query = 'SELECT * FROM chapters WHERE chapter_number = '.$chapter_number;
+    public function isUniqueNumber() {
+        $query = 'SELECT chapter_number FROM chapters';
         $reponse =  $this->bdd->query($query); 
         $datas = $reponse->fetchAll();
         return $datas;
+        var_dump($data);
     }
 
     public function findOneChapter($id) {   
