@@ -16,13 +16,17 @@ foreach ($listChapters as $listChapter)
             </td>
             <td>
                <a href=index.php?p=update&id=<?=$listChapter['id']?>#ancre1 class="name_chapter" style="text-decoration: none; color: rgb(188, 212, 145);">
-                   <strong><?= htmlspecialchars ($listChapter['title'])?></strong>
+                   <strong><?= htmlspecialchars(strtoupper($listChapter['title']))?></strong>
                </a>
             </td>
+
+            <?php if(ChapterController::IsLogedIn()) {?>
             <td>
-               <a href=index.php?p=delet&id=<?=$listChapter['id']?>>
-                <i class="far fa-trash-alt" title="Supprimer"></i></a>
+                <a href=index.php?p=delet&id=<?=$listChapter['id']?>>
+                <i class="far fa-trash-alt" title="Supprimer"></i></a>   
             </td>
+            <?php
+            }?> 
         </tr>
     </tbody>
             

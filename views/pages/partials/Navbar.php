@@ -1,6 +1,3 @@
-<?php
-      
-?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="index.php?p=home">Blog Jean Forteroche</a>
@@ -22,7 +19,7 @@
                 <?php
                     }   
                  else{?>
-                    <a class="nav-link" href="index.php?p=loggout#ancre4">LogOut</a>
+                    <a class="nav-link" href="index.php?p=loggout">LogOut</a>
                 <?php
                 }?>    
             </li>

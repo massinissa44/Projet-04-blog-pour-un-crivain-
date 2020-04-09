@@ -41,8 +41,11 @@
         elseif($_GET["p"] ==="home") {
                 include 'partials/chaptersView.php';
             ?>
+            <?php if(ChapterController::IsLogedIn()) {?>
             <a href="index.php?p=create#ancre1" class="btn btn-outline-secondary btn-md">
                 <span class="glyphicon glyphicon-edit"></span>Ajouter un nouveau chapitre</a>
+
+            <?php }?>
             <?php 
         }
         
@@ -56,23 +59,15 @@
             </style>
             <?php
         }
-        /*if(isset($_POST["username"]) && !empty($_POST["username"])){
-            ChapterController::Loggin($_POST["username"], $_POST["password"]);
-            header("Location: {$_SERVER['HTTP_REFERER']}");
-        }
-        
-        elseif (isset($_POST['content_comment']) && !empty($_POST["content_comment"])) {
-            ChapterController::CreateComment($bdd);
-            header("Location: {$_SERVER['HTTP_REFERER']}");
-        }*/
 
+        elseif($_GET["p"] === "loggout") {
+            !ChapterController::IsLogedIn();
+            
+            header('Location:index.php?p=home'); 
+        }
         
         elseif ($_GET["p"] === "create") {
             include 'partials/Create.php';
-            if(isset($_POST["title"]) && !empty($_POST["title"])){
-                $Chapter = ChapterController::CreateChapter($bdd);
-                header('Location:index.php?p=home#ancre2');
-            }
         }
         
         elseif ($_GET["p"] ==="delet" && isset($_GET['id'])){   
@@ -89,13 +84,8 @@
         
         elseif (isset($_GET['id']) && $_GET['p'] ==="update"){
             include 'partials/Update.php';
-
-            if(isset($_POST["title"]) && !empty($_POST["title"])){
-            ChapterController::UpdateChapter($bdd);
-            header("Location: {$_SERVER['HTTP_REFERER']}");
-            }
             
-            elseif (isset($_POST['content_comment']) && !empty($_POST["content_comment"])) {
+            if (isset($_POST['content_comment']) && !empty($_POST["content_comment"])) {
                 ChapterController::CreateComment($bdd);
                 header("Location: {$_SERVER['HTTP_REFERER']}");
             }    

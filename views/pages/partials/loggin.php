@@ -8,7 +8,7 @@
     
     if($result && $result['error']){ ?>
       <div class="alert alert-danger" role="alert">    
-        <p><?=$result['message'];?></p>   
+      <p><?=$result['message'];?></p>   
       </div>   
 <?php }}?> 
     

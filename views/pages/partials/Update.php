@@ -8,6 +8,19 @@
         $dataChapter = ChapterController::ReadOneChapter($bdd, $id);
         $dataComment = ChapterController::ReadComment($bdd);
         $dataCommentChapters = ChapterController::RedChapterComments($bdd, $id);
+    
+        if(isset($_POST["title"]) && !empty($_POST["title"])){
+            if(ChapterController::UpdateChapter($bdd)){
+            header("Location: {$_SERVER['HTTP_REFERER']}");
+            }
+            else {
+                ?>
+                <div class="alert alert-danger" role="alert">    
+                    <p>Numéro de chapitre existe déjà, veuillez entrer un nouveau numéro</p>   
+                </div> 
+                <?php   
+            }     
+        } 
     ?>
       
     <?php
@@ -17,7 +30,9 @@
         <div class="jumbotron">
             <h2 class="display-3"><?= $data['title'];?></h2>
             <p class="lead"><?= $data['content'];?></p>
-            <i class="fas fa-edit fa-2x btn_update" title="Modifier"></i>
+            <?php if(ChapterController::IsLogedIn()) {?>
+                <i class="fas fa-edit fa-2x btn_update" title="Modifier"></i>
+            <?php } ?>
             <hr class="my-4">
         </div>
         <div class="jumbotron forms_update hide">
@@ -60,13 +75,17 @@
                 <div class="card-body text-secondary">
                     <p class="card-text"><?= htmlspecialchars ($datas['content_comment']);?></p>
                     <div class="icons"> 
-                        <a href=index.php?p=delet-comment&id=<?=$datas['id']?>>
-                            <i class="far fa-trash-alt" title="Supprimer"></i></a>
+                        <?php if(ChapterController::IsLogedIn()) {?>
+                            <a href=index.php?p=delet-comment&id=<?=$datas['id']?>>
+                                <i class="far fa-trash-alt" title="Supprimer"></i>
+                            </a>
+                        <?php } ?>
                         <a href=>
-                            <i class="fas fa-flag" title="Signaler"></i></a>   
+                            <i class="fas fa-flag" title="Signaler"></i>
+                        </a>   
                     </div>
                 </div>
-                <?php }
+            <?php }
                 ?>        
                 <button class="btn btn-primary btn_comment">Ajouter un commentaire</button>
             </div>

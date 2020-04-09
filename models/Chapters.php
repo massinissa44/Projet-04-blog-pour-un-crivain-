@@ -15,7 +15,7 @@ class Chapters {
     //deja utilisé
     public function listChapters() {
         // execute la requete sql
-        $query = "SELECT * FROM chapters" ;
+        $query = "SELECT * FROM chapters ORDER BY chapter_number ASC" ;
         $reponse =  $this->bdd->query($query);
         $listChapters = $reponse->fetchAll();
        return $listChapters;
@@ -34,12 +34,12 @@ class Chapters {
         return $listeChapterComments;       
     }
 
-    public function isUniqueNumber() {
-        $query = 'SELECT chapter_number FROM chapters';
-        $reponse =  $this->bdd->query($query); 
-        $datas = $reponse->fetchAll();
-        return $datas;
-        var_dump($data);
+    public static function isUniqueNumber($number) {
+        $query = "SELECT chapter_number FROM chapters WHERE chapter_number = $number";
+        global $bdd;
+        $reponse =  $bdd->query($query); 
+        $data = $reponse->fetchAll();
+        return !$data; // return boolean
     }
 
     public function findOneChapter($id) {   
@@ -74,5 +74,6 @@ class Chapters {
         $query = "DELETE FROM chapters WHERE id=". $id;
         $this->bdd->exec($query);
     }
+
 }
 

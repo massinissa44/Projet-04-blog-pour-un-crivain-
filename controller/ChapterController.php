@@ -14,12 +14,19 @@ class ChapterController
     public static function CreateChapter ($bdd)
     {
         $chapter_number = $_POST["chapter_number"];
-        $title = $_POST["title"];
-        $description = $_POST["description"];
-        $content = $_POST["content"];    
-        
-        $chapters = new Chapters($bdd);
-        $chapters->createChapter($title, $chapter_number, $description, $content);
+           
+        if(ChapterController::IsUniqueNumber($_POST["chapter_number"])) {
+            $title = $_POST["title"];
+            $description = $_POST["description"];
+            $content = $_POST["content"]; 
+
+            $chapters = new Chapters($bdd);
+            $chapters->createChapter($title, $chapter_number, $description, $content);
+            return true;
+        }
+        else{
+            return false;
+        }  
     }
 
     public static function CreateComment($bdd)
@@ -68,18 +75,29 @@ class ChapterController
         return $Auth->loggin($username,$password);
     }
 
+    public static function IsLogedIn()
+    {
+        $AuthIn = new Auth();
+        return $AuthIn->isLogedIn();
+    }
 
     /* --Update-- */
     public static function UpdateChapter ($bdd)
     {
-        $id = $_POST["id"];
         $chapter_number = $_POST["chapter_number"];
-        $title = $_POST["title"];         
-        $description = $_POST["description"];
-        $content = $_POST["content"];
+        if(ChapterController::IsUniqueNumber($_POST["chapter_number"])) {
+            $id = $_POST["id"];
+            $title = $_POST["title"];         
+            $description = $_POST["description"];
+            $content = $_POST["content"];
 
-        $Chapter = new Chapters($bdd);
-        $Chapter->updateChapter($id, $title, $chapter_number, $description, $content);
+            $Chapter = new Chapters($bdd);
+            $Chapter->updateChapter($id, $title, $chapter_number, $description, $content);
+            return true;
+        }
+        else{
+            return false;
+        }    
     }
 
     /* --Delete-- */
@@ -95,11 +113,11 @@ class ChapterController
         $comments->deleteComment($id);
     }
 
-    public static function IsUniqueNumber($bdd)
+    public static function IsUniqueNumber($number)
     {
-        $chapters = new Chapters($bdd);
-        return $chapters->isUniqueNumber();
+        return Chapters::isUniqueNumber($number);
     }
+
 }
 
 
