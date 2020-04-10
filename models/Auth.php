@@ -33,11 +33,6 @@ class Auth {
     public function isLogedIn() {
       return $this->logged;
     }
-
-    public function isLogedOut() {
-      $_SESSION['logged'] = false;
-      $this->logged = false;
-    }
 }
 //interagir avec les donnees
 

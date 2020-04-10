@@ -30,7 +30,7 @@
         <div class="jumbotron">
             <h2 class="display-3"><?= $data['title'];?></h2>
             <p class="lead"><?= $data['content'];?></p>
-            <?php if(ChapterController::IsLogedIn()) {?>
+            <?php if($Auth->isLogedIn()) {?>
                 <i class="fas fa-edit fa-2x btn_update" title="Modifier"></i>
             <?php } ?>
             <hr class="my-4">
@@ -75,7 +75,7 @@
                 <div class="card-body text-secondary">
                     <p class="card-text"><?= htmlspecialchars ($datas['content_comment']);?></p>
                     <div class="icons"> 
-                        <?php if(ChapterController::IsLogedIn()) {?>
+                        <?php  if($Auth->isLogedIn()){?>
                             <a href=index.php?p=delet-comment&id=<?=$datas['id']?>>
                                 <i class="far fa-trash-alt" title="Supprimer"></i>
                             </a>

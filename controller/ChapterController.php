@@ -77,8 +77,8 @@ class ChapterController
 
     public static function IsLogedIn()
     {
-        $AuthIn = new Auth();
-        return $AuthIn->isLogedIn();
+        global $Auth; 
+        return $Auth->isLogedIn();
     }
 
     /* --Update-- */

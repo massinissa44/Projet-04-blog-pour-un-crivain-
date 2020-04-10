@@ -20,7 +20,7 @@ foreach ($listChapters as $listChapter)
                </a>
             </td>
 
-            <?php if(ChapterController::IsLogedIn()) {?>
+            <?php if($Auth->isLogedIn()) {?>
             <td>
                 <a href=index.php?p=delet&id=<?=$listChapter['id']?>>
                 <i class="far fa-trash-alt" title="Supprimer"></i></a>   

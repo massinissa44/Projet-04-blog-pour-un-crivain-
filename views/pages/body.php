@@ -41,10 +41,10 @@
         elseif($_GET["p"] ==="home") {
                 include 'partials/chaptersView.php';
             ?>
-            <?php if(ChapterController::IsLogedIn()) {?>
+            <?php if($Auth->isLogedIn()) {?>
             <a href="index.php?p=create#ancre1" class="btn btn-outline-secondary btn-md">
-                <span class="glyphicon glyphicon-edit"></span>Ajouter un nouveau chapitre</a>
-
+                <span class="glyphicon glyphicon-edit"></span>Ajouter un nouveau chapitre
+            </a>
             <?php }?>
             <?php 
         }
@@ -61,12 +61,11 @@
         }
 
         elseif($_GET["p"] === "loggout") {
-            !ChapterController::IsLogedIn();
-            
+            !$Auth->isLogedIn();   
             header('Location:index.php?p=home'); 
         }
         
-        elseif ($_GET["p"] === "create") {
+        elseif ($_GET["p"] === "create") {   
             include 'partials/Create.php';
         }
         
