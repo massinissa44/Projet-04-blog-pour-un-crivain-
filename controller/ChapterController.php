@@ -13,8 +13,7 @@ class ChapterController
     /* --Create-- */
     public static function CreateChapter ($bdd)
     {
-        $chapter_number = $_POST["chapter_number"];
-           
+        $chapter_number = $_POST["chapter_number"];           
         if(ChapterController::IsUniqueNumber($_POST["chapter_number"])) {
             $title = $_POST["title"];
             $description = $_POST["description"];
@@ -85,19 +84,22 @@ class ChapterController
     public static function UpdateChapter ($bdd)
     {
         $chapter_number = $_POST["chapter_number"];
-        if(ChapterController::IsUniqueNumber($_POST["chapter_number"])) {
-            $id = $_POST["id"];
-            $title = $_POST["title"];         
-            $description = $_POST["description"];
-            $content = $_POST["content"];
+        $id = $_POST["id"];
+        $title = $_POST["title"];         
+        $description = $_POST["description"];
+        $content = $_POST["content"];
 
-            $Chapter = new Chapters($bdd);
-            $Chapter->updateChapter($id, $title, $chapter_number, $description, $content);
+        $chapter = new Chapters($bdd);
+        $data = $chapter->findOneChapter($id);
+        
+        if($data['0']['chapter_number'] == $chapter_number || ChapterController::IsUniqueNumber($chapter_number)) {
+            $chapter->updateChapter($id, $title, $chapter_number, $description, $content);
             return true;
         }
+        
         else{
             return false;
-        }    
+        }  
     }
 
     /* --Delete-- */
@@ -117,7 +119,6 @@ class ChapterController
     {
         return Chapters::isUniqueNumber($number);
     }
-
 }
 
 

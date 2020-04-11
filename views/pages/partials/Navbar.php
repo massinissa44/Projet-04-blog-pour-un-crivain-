@@ -11,23 +11,21 @@
                 <a class="nav-link" href="http://localhost/massinissa_project/web/index.php?p=home#ancre1">Books</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Reported Coms</a>
+                <?php  if($Auth->isLogedIn()){?>
+                <a class="nav-link" href="index.php?p=reported#ancre5">Reported</a>
+                <?php
+                    }?>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <?php  if(!$Auth->isLogedIn()){?>      
                     <a class="nav-link" href="index.php?p=loggin#ancre4">Login</a>
                 <?php
                     }   
-                 else{?>
+                else{?>
                     <a class="nav-link" href="index.php?p=loggout">LogOut</a>
                 <?php
                 }?>    
             </li>
         </ul>
     </div>
-    
-    <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
 </nav>

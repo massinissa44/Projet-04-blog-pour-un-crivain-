@@ -18,7 +18,7 @@ class Chapters {
         $query = "SELECT * FROM chapters ORDER BY chapter_number ASC" ;
         $reponse =  $this->bdd->query($query);
         $listChapters = $reponse->fetchAll();
-       return $listChapters;
+    return $listChapters;
     }
 
     public function listChapterComments() {

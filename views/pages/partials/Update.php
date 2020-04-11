@@ -1,8 +1,8 @@
-    <script>
-        tinymce.init({
-        selector: '#mytextarea'
-        });
-   </script>
+<script>
+    tinymce.init({
+    selector: '#mytextarea'
+    });
+</script>
     <?php
         $id = $_GET["id"];
         $dataChapter = ChapterController::ReadOneChapter($bdd, $id);
@@ -21,8 +21,7 @@
                 <?php   
             }     
         } 
-    ?>
-      
+    ?>     
     <?php
     foreach ($dataChapter as $data)
         {
@@ -97,7 +96,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Titre</label>
                         <input type="text" name="title_comment" class="form-control" id="exampleInputEmail1">
-                     </div>
+                    </div>
                     <div class="form-group">
                         <label for="exampleTextarea">Commentaire</label>
                         <textarea  name="content_comment" class="form-control" id="exampleTextarea" rows="8"></textarea>

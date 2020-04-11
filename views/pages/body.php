@@ -63,10 +63,12 @@
         elseif($_GET["p"] === "loggout") {
             !$Auth->isLogedIn();   
             header('Location:index.php?p=home'); 
+            session_destroy();
         }
         
         elseif ($_GET["p"] === "create") {   
             include 'partials/Create.php';
+            $Auth->isLogedIn();
         }
         
         elseif ($_GET["p"] ==="delet" && isset($_GET['id'])){   
@@ -88,6 +90,10 @@
                 ChapterController::CreateComment($bdd);
                 header("Location: {$_SERVER['HTTP_REFERER']}");
             }    
+        }
+
+        elseif ($_GET['p'] === "reported"){
+            include 'partials/Reported.php';
         }
         ?>
     </div>                  
