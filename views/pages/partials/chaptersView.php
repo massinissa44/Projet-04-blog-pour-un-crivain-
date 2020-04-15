@@ -19,7 +19,6 @@ foreach ($listChapters as $listChapter)
                     <strong><?= htmlspecialchars(strtoupper($listChapter['title']))?></strong>
                 </a>
             </td>
-
             <?php if($Auth->isLogedIn()) {?>
             <td>
                 <a href=index.php?p=delet&id=<?=$listChapter['id']?>>

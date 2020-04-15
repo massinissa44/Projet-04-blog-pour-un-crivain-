@@ -28,7 +28,7 @@ class Chapters {
     }
 
     public function listeChapterComments($id) {
-        $query = "SELECT * FROM  comments WHERE id_chapter = $id";      
+        $query = "SELECT * FROM  comments WHERE id_chapter = $id ";      
         $reponse =  $this->bdd->query($query);   
         $listeChapterComments = $reponse->fetchAll();
         return $listeChapterComments;       
@@ -63,7 +63,6 @@ class Chapters {
             description = '$description',
             content = '$content'
             WHERE id='$id'";
-
         $Chapter = $this->bdd->prepare($sql);
         $Chapter->execute();
         return true;

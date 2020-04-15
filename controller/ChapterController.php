@@ -68,6 +68,11 @@ class ChapterController
         return $chaptercomments->listChapterComments();
     }
 
+    public static function ReadReportedComments($bdd){
+        $comments = new Comments($bdd);
+        return $comments->readReportedComments();
+    }
+
     public static function Loggin($username,$password)
     {    
         global $Auth; 
@@ -91,8 +96,8 @@ class ChapterController
 
         $chapter = new Chapters($bdd);
         $data = $chapter->findOneChapter($id);
-        
-        if($data['0']['chapter_number'] == $chapter_number || ChapterController::IsUniqueNumber($chapter_number)) {
+        var_dump($data[0]['chapter_number']);
+        if($data[0]['chapter_number'] == $chapter_number || ChapterController::IsUniqueNumber($chapter_number)) {
             $chapter->updateChapter($id, $title, $chapter_number, $description, $content);
             return true;
         }
@@ -119,6 +124,7 @@ class ChapterController
     {
         return Chapters::isUniqueNumber($number);
     }
+
 }
 
 

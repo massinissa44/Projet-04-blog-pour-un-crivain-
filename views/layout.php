@@ -1,6 +1,5 @@
 <?php
 include_once __DIR__ . '/../controller/ChapterController.php';
-
 //récupération de notre header
 include_once 'pages/head.php';
 
