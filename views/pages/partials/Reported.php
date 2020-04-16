@@ -19,7 +19,7 @@ foreach($reportedComments as $reported)
     <td><?=$reported["title_comment"]?></td>
     <td><?=$reported["content_comment"]?></td>
     <td class="text-center">
-      <form method="POST" action="?action=DeletReported" class="form_comnt">
+      <form method="POST" action="?action=DeletReportedComment" class="form_comnt">
           <input type="hidden" name="id_comment" value="<?=$reported['id']?>">
         <button type="submit" class="btn_reported"><i class="fas fa-times-circle fa-2x" title="Supprimer"></i></button>
       </form>

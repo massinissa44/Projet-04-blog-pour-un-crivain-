@@ -96,5 +96,11 @@
             include 'partials/Reported.php';
         }
         ?>
-    </div>                  
+    </div> 
+    <?php if($Auth->isLogedIn()) {?>
+            <script src="assets/update.js"></script>
+        <?php }   
+        else {?> 
+            <script src="assets/comment.js"></script>  
+    <?php } ?>                 
 </body>

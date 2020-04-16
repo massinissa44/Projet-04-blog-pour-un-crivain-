@@ -3,4 +3,4 @@ include '../models/Comments.php';
 
 $comment = new Comments($bdd);
 $t= $comment->reporteComment($_POST['id_comment']);
-header("Location: {$_SERVER['HTTP_REFERER']}"); //pourquoi les accolades a verifier
+header("Location: {$_SERVER['HTTP_REFERER']}");

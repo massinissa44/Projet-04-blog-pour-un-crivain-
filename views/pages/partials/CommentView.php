@@ -16,20 +16,19 @@ foreach ($dataCommentChapters as $datas){
             <p class="card-text"><?= htmlspecialchars ($datas['content_comment']);?></p>
             <div class="icons"> 
                 <?php  if($Auth->isLogedIn()){?>
-                    <a href=index.php?p=delet-comment&id=<?=$datas['id']?>>
-                        <i class="far fa-trash-alt" title="Supprimer"></i>
-                    </a>
-                <?php } ?>
-                <form method="POST" action="?action=CommentController" class="form_comnt">
-                    <div class="form-groupe">
+                    <form method="POST" action="?action=DeletReportedComment" class="form_comnt">
                         <input type="hidden" name="id_comment" value="<?=$datas['id']?>">
-                    </div>
+                        <button type="submit" class="btn_reported"><i class="far fa-trash-alt" title="Supprimer"></i></button>
+                    </form>
+                <?php } ?>
+                <form method="POST" action="?action=ReportedComment" class="form_comnt">
+                    <input type="hidden" name="id_comment" value="<?=$datas['id']?>">
                     <button type="submit" class="btn_reported"><i class="fas fa-flag" title="Signaler"></i></button>
-                </form>   
+                </form>
             </div>
         </div>
     <?php }
-        ?>        
+        ?>       
         <button class="btn btn-primary btn_comment">Ajouter un commentaire</button>
     </div>
     <div class="carde border-light mb-3 forms_comment hiden">

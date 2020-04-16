@@ -1,10 +1,5 @@
 
 <?php
-//On doit faire du rendering pour afficher nos view en récupérant l'URL
-// les expressions régulières pour filtrer l'url et dire
-// si URL == HOME => { inclure la page layout.php } // /4 views
-// si non affiche Error.html
-// récupération de données via le model
 require __DIR__.'/../models/Chapters.php';
 require __DIR__.'/../models/Comments.php';
 
@@ -95,8 +90,9 @@ class ChapterController
         $content = $_POST["content"];
 
         $chapter = new Chapters($bdd);
+        
         $data = $chapter->findOneChapter($id);
-        var_dump($data[0]['chapter_number']);
+        
         if($data[0]['chapter_number'] == $chapter_number || ChapterController::IsUniqueNumber($chapter_number)) {
             $chapter->updateChapter($id, $title, $chapter_number, $description, $content);
             return true;
@@ -108,17 +104,6 @@ class ChapterController
     }
 
     /* --Delete-- */
-    public static function DeletChapter($bdd, $id)
-    {
-        $chapters = new Chapters($bdd);
-        $chapters->deleteChapter($id);
-    }
-
-    public static function DeletComment($bdd, $id)
-    {
-        $comments = new Comments($bdd);
-        $comments->deleteComment($id);
-    }
 
     public static function IsUniqueNumber($number)
     {

@@ -16,63 +16,54 @@ class Chapters {
     public function listChapters() {
         // execute la requete sql
         $query = "SELECT * FROM chapters ORDER BY chapter_number ASC" ;
-        $reponse =  $this->bdd->query($query);
-        $listChapters = $reponse->fetchAll();
-    return $listChapters;
-    }
-
-    public function listChapterComments() {
-        // vérifier si l'id existe
-        // execute la requete sql qui liste les commentaires liés à $this->id
-        "SELECT * FROM comments WHERE id_chapter = $this->id";
+        $response =  $this->bdd->query($query);
+        $listChapters = $response->fetchAll();
+        return $listChapters;
     }
 
     public function listeChapterComments($id) {
         $query = "SELECT * FROM  comments WHERE id_chapter = $id ";      
-        $reponse =  $this->bdd->query($query);   
-        $listeChapterComments = $reponse->fetchAll();
+        $response =  $this->bdd->query($query);   
+        $listeChapterComments = $response->fetchAll();
         return $listeChapterComments;       
     }
 
     public static function isUniqueNumber($number) {
         $query = "SELECT chapter_number FROM chapters WHERE chapter_number = $number";
         global $bdd;
-        $reponse =  $bdd->query($query); 
-        $data = $reponse->fetchAll();
+        $response =  $bdd->query($query); 
+        $data = $response->fetchAll();
         return !$data; // return boolean
     }
 
     public function findOneChapter($id) {   
         $query = 'SELECT * FROM chapters WHERE id = '.$id;     
-        $reponse =  $this->bdd->query($query); 
-        $datas = $reponse->fetchAll();
+        $response =  $this->bdd->query($query); 
+        $datas = $response->fetchAll();
         return $datas;
     }
     
     //déja utilisé
     public function createChapter($title, $chapter_number, $description, $content) {
         // execute requete
-        $requete = $this->bdd->prepare('INSERT INTO chapters (title, chapter_number, content, description) VALUES(?, ?, ?, ?)');
-        $requete->execute(array($title, $chapter_number, $content, $description));
+        $query = $this->bdd->prepare('INSERT INTO chapters (title, chapter_number, content, description) VALUES(?, ?, ?, ?)');
+        $query->execute(array($title, $chapter_number, $content, $description));
     }
 
 
     public function updateChapter($id, $title, $chapter_number, $description, $content) {
-        $sql = "UPDATE chapters SET `title`='$title',
-            chapter_number = '$chapter_number',
-            description = '$description',
-            content = '$content'
-            WHERE id='$id'";
-        $Chapter = $this->bdd->prepare($sql);
-        $Chapter->execute();
+        $query = "UPDATE chapters SET title = $title,
+            chapter_number = $chapter_number,
+            description = $description,
+            content = $content
+            WHERE id = $id";
+        $chapter = $this->bdd->prepare($query);
+        $chapter->execute();
         return true;
-        //if($Chapter->rowCount()) nous permet s'il ya eu une insertion dans notre base de données
     }
 
     public function deleteChapter($id) {
         $query = "DELETE FROM chapters WHERE id=". $id;
         $this->bdd->exec($query);
     }
-
 }
-

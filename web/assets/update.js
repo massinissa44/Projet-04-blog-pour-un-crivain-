@@ -1,4 +1,3 @@
-
 window.onload = function() {
   
   button_Update = document.querySelector(".btn_update");
@@ -14,5 +13,3 @@ window.onload = function() {
     forms_comment.classList.remove("hiden");
     }); 
 }
-
-

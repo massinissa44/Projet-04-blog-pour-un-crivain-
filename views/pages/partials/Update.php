@@ -62,6 +62,4 @@
         </div>  
         <?php 
         include 'CommentView.php'
-        ?>    
-<script src="assets/index.js"></script>   
-
+        ?>

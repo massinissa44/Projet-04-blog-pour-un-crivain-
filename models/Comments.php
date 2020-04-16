@@ -14,15 +14,14 @@ class Comments {
     public function listComments() {
         // execute la requete sql
         $query = "SELECT * FROM comments";
-        $reponse =  $this->bdd->query($query);
-        $listComments = $reponse->fetchAll();
-    return $listComments;
+        $response =  $this->bdd->query($query);
+        $listComments = $response->fetchAll();
+        return $listComments;
     }
 
     public function createComment($title_comment, $content_comment, $id_chapter) {
-        // execute requete
-        $requete = $this->bdd->prepare('INSERT INTO comments (title_comment, content_comment, id_chapter) VALUES(?, ?, ?)');
-        $requete->execute(array($title_comment, $content_comment, $id_chapter));
+        $query = $this->bdd->prepare('INSERT INTO comments (title_comment, content_comment, id_chapter) VALUES(?, ?, ?)');
+        $query->execute(array($title_comment, $content_comment, $id_chapter));
     }
 
     public function deleteComment($id) {
@@ -31,9 +30,9 @@ class Comments {
     }
 
     public function reporteComment($id){
-        $requete = "UPDATE comments SET reported_count = reported_count + 1 WHERE id = $id";   
-        $comment = $this->bdd->prepare($requete);
-        $comment->execute();
+        $query = "UPDATE comments SET reported_count = reported_count + 1 WHERE id = $id";   
+        $response = $this->bdd->prepare($query);
+        $response->execute();
         return true;    
     }
 

@@ -1,7 +1,5 @@
 <?php
-class Auth {
-    //public static $bddtmp = $bdd;
-    
+class Auth {    
     private $username = 'admin';
     private $password = 'forteroche2020';
     private $logged = false;
@@ -10,7 +8,6 @@ class Auth {
       if (!empty($_SESSION['logged'])) {
         $this->logged = (bool) $_SESSION['logged'];
       }
-      
     }
 
     public function loggin($username,$password) {
@@ -34,5 +31,3 @@ class Auth {
       return $this->logged;
     }
 }
-//interagir avec les donnees
-

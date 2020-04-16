@@ -14,8 +14,8 @@
                 <p>Numéro de chapitre existe déjà, veuillez entrer un nouveau numéro</p>   
             </div> 
             <?php   
-        }     
-    }     
+        }
+    }
 ?>
 <div class="jumbotron">
     <h2 class="display-3"><strong>Formulaire de création</strong></h2>

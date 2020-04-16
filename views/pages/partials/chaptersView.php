@@ -21,8 +21,10 @@ foreach ($listChapters as $listChapter)
             </td>
             <?php if($Auth->isLogedIn()) {?>
             <td>
-                <a href=index.php?p=delet&id=<?=$listChapter['id']?>>
-                <i class="far fa-trash-alt" title="Supprimer"></i></a>   
+                <form method="POST" action="?action=DeleteChapter" class="form_comnt">
+                    <input type="hidden" name="id" value="<?=$listChapter['id']?>">
+                    <button type="submit" class="btn_reported"><i class="far fa-trash-alt" title="Supprimer"></i></button>
+                </form>  
             </td>
             <?php
             }?> 
