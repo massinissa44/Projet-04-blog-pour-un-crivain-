@@ -1,10 +1,8 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="index.php?p=home">Blog Jean Forteroche</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02">
         <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
@@ -12,17 +10,17 @@
             </li>
             <li class="nav-item">
                 <?php  if($Auth->isLogedIn()){?>
-                <a class="nav-link" href="index.php?p=reported#ancre5">Reported</a>
+                    <a class="nav-link" href="index.php?p=reported#ancre5">Reported</a>
                 <?php
-                    }?>
+                }?>
             </li>
             <li class="nav-item active">
                 <?php  if(!$Auth->isLogedIn()){?>      
-                    <a class="nav-link" href="index.php?p=loggin#ancre4">Login</a>
+                    <a class="nav-link" href="index.php?p=login#ancre4">Login</a>
                 <?php
-                    }   
+                }   
                 else{?>
-                    <a class="nav-link" href="index.php?p=loggout">LogOut</a>
+                    <a class="nav-link" href="index.php?p=logout">LogOut</a>
                 <?php
                 }?>    
             </li>

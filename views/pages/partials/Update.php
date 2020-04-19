@@ -30,36 +30,35 @@
             <h2 class="display-3"><?= $data['title'];?></h2>
             <p class="lead"><?= $data['content'];?></p>
             <?php if($Auth->isLogedIn()) {?>
-                <i class="fas fa-edit fa-2x btn_update" title="Modifier"></i>
+                <i class="fas fa-edit fa-2x button-update" title="Modifier"></i>
             <?php } ?>
             <hr class="my-4">
         </div>
-        <div class="jumbotron forms_update hide">
+        <div class="jumbotron hide-update">
             <form method="POST" action="" class="form">
-                <div class="form-group">
-                    <input value ="<?= $id;?>" type="hidden" name="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div>
+                    <input value ="<?= $id;?>" type="hidden" name="id" class="form-control" >
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Nom du chapitre</label>
-                    <input value ="<?= htmlspecialchars ($data['title']);?>" type="text" name="title" class="form-control" id="exampleInputEmail1">
+                <div>
+                    <label for="nameOf-Chapter">Nom du chapitre</label>
+                    <input value ="<?= htmlspecialchars ($data['title']);?>" type="text" name="title" class="form-control" >
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Numéro du chapitre</label>
-                    <input value = "<?= $data['chapter_number'];?>" type="number" name="chapter_number" class="form-control" id="exampleInputEmail1">
+                <div>
+                    <label for="numberOf-Chapter">Numéro du chapitre</label>
+                    <input value = "<?= $data['chapter_number'];?>" type="number" name="chapter_number" class="form-control">
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Description</label>
-                    <input value ="<?= htmlspecialchars ($data['description']);?>" type="text" name="description" class="form-control" id="exampleTextarea">
+                <div>
+                    <label for="descriptionOf-Chapter">Description</label>
+                    <input value ="<?= htmlspecialchars ($data['description']);?>" type="text" name="description" class="form-control">
                 </div>
-                <div class="form-group">
-                    <label for="exampleTextarea">Contenu</label>
-                    <textarea id="mytextarea" name="content" class="form-control" id="exampleTextarea" rows="8"><?= htmlspecialchars ($data['content']);?></textarea>
+                <div>
+                    <label for="contentOf-Chapter">Contenu</label>
+                    <textarea id="mytextarea" name="content" class="form-control" rows="8"><?= htmlspecialchars ($data['content']);?></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Mettre a jour</button> 
-            </form> </br>
+                <button type="submit" class="btn btn-primary button_updt">Mettre a jour</button> 
+            </form> 
             <?php } 
             ?>  
-        </div>  
+        </div>    
         <?php 
-        include 'CommentView.php'
-        ?>
+        include 'CommentView.php'?>     

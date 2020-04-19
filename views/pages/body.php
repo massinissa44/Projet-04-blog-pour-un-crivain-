@@ -1,4 +1,12 @@
-<body>
+<?php 
+    if($Auth->isLogedIn()) {
+        $class = "logged";
+    }
+    else {
+        $class = "";
+    }
+?>
+<body class="<?php $class ?>">
     <div class="card bg-dark text-white">
         <img class="card-img background_picture"  src="../home.jpg" alt="image de fond">
         <div class="card-img-overlay">
@@ -34,23 +42,21 @@
     <div class="container">
         <?php 
         if (!isset($_GET["p"]) || empty($_GET["p"])) {
-            header('Location:index.php?p=home');
+            header('Location:Index.php?p=home');
             exit;
-        }
-        
+        }       
         elseif($_GET["p"] ==="home") {
-                include 'partials/chaptersView.php';
+                include 'partials/ChaptersView.php';
             ?>
             <?php if($Auth->isLogedIn()) {?>
-            <a href="index.php?p=create#ancre1" class="btn btn-outline-secondary btn-md">
+            <a href="Index.php?p=create#ancre1" class="btn btn-outline-secondary btn-md">
                 <span class="glyphicon glyphicon-edit"></span>Ajouter un nouveau chapitre
             </a>
             <?php }?>
             <?php 
-        }
-        
-        elseif($_GET["p"] === "loggin") {
-            include 'partials/loggin.php';
+        }        
+        elseif($_GET["p"] === "login") {
+            include 'partials/Login.php';
             ?>
             <style>
                 .content {
@@ -59,48 +65,22 @@
             </style>
             <?php
         }
-
-        elseif($_GET["p"] === "loggout") {
+        elseif($_GET["p"] === "logout") {
             !$Auth->isLogedIn();   
-            header('Location:index.php?p=home'); 
+            header('Location:Index.php?p=home'); 
             session_destroy();
-        }
-        
+        }        
         elseif ($_GET["p"] === "create") {   
             include 'partials/Create.php';
             $Auth->isLogedIn();
-        }
-        
-        elseif ($_GET["p"] ==="delet" && isset($_GET['id'])){   
-           // include 'partials/delet.php';
-            ChapterController::DeletChapter($bdd,$_GET['id']);
-            header('Location:index.php?p=home#ancre2');
-        }
-
-        elseif ($_GET["p"] ==="delet-comment" && isset($_GET['id'])){   
-            // include 'partials/delet.php';
-            ChapterController::DeletComment($bdd,$_GET['id']);
-            header("Location: {$_SERVER['HTTP_REFERER']}");
-        }
-        
+        }             
         elseif (isset($_GET['id']) && $_GET['p'] ==="update"){
-            include 'partials/Update.php';
-            
-            if (isset($_POST['content_comment']) && !empty($_POST["content_comment"])) {
-                ChapterController::CreateComment($bdd);
-                header("Location: {$_SERVER['HTTP_REFERER']}");
-            }    
+            include 'partials/Update.php';  
         }
-
         elseif ($_GET['p'] === "reported"){
             include 'partials/Reported.php';
         }
         ?>
-    </div> 
-    <?php if($Auth->isLogedIn()) {?>
-            <script src="assets/update.js"></script>
-        <?php }   
-        else {?> 
-            <script src="assets/comment.js"></script>  
-    <?php } ?>                 
+    </div>
 </body>
+<script src="assets/index.js"></script> 

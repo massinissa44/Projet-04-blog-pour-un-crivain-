@@ -6,7 +6,7 @@
 <?php
     if(isset($_POST["title"]) && !empty($_POST["title"])){
         if(ChapterController::CreateChapter($bdd)) {
-            header('Location:index.php?p=home#ancre2');
+            header('Location:Index.php?p=home#ancre2');
         }
         else {
             ?>
@@ -18,23 +18,23 @@
     }
 ?>
 <div class="jumbotron">
-    <h2 class="display-3"><strong>Formulaire de création</strong></h2>
+    <h2 class="display-3">Formulaire de création</h2>
     <div class="lead">
-        <form method="POST" action="" class="creat_chapter">
-            <div class="form-group">
+        <form method="POST" action="" class="creat-chapter">
+            <div>
                 <label>Nom du chapitre</label>
                 <input  type="text" name="title" class="form-control">
             </div>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Numéro du chapitre</label>
-                <input type="number" name="chapter_number" class="form-control" id="exampleInputEmail1">
+            <div>
+                <label for="numberOf-chapter">Numéro du chapitre</label>
+                <input type="number" name="chapter_number" class="form-control">
             </div>            
-            <div class="form-group">
-                <label for="exampleInputPassword1">Description</label>
+            <div>
+                <label for="descriptionOf-chapter">Description</label>
                 <input type="text" name="description" class="form-control">
             </div>
             <div class="form-group">
-                <label for="exampleTextarea">Contenu</label>
+                <label for="contentOf-chapter">Contenu</label>
                 <textarea id="mytextarea" type="textarea" name="content" class="form-control" rows="8"></textarea>
             </div>
             <button type="submit" class="btn btn-primary"> Créer un nouveau chapitre </button>

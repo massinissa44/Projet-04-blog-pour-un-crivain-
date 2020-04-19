@@ -1,6 +1,5 @@
 <?php
-$reportedComments = ChapterController::ReadReportedComments($bdd);
-
+  $reportedComments = ChapterController::ReadReportedComments($bdd);
 ?>
 <div class="container" id="ancre5">
   <div class="row col-md-10 col-md-offset-1 custyle">
@@ -12,26 +11,26 @@ $reportedComments = ChapterController::ReadReportedComments($bdd);
           <th class="text-center">Action</th>
         </tr>
       </thead>
-<?php
-foreach($reportedComments as $reported)
-{?>
-  <tr>
-    <td><?=$reported["title_comment"]?></td>
-    <td><?=$reported["content_comment"]?></td>
-    <td class="text-center">
-      <form method="POST" action="?action=DeletReportedComment" class="form_comnt">
-          <input type="hidden" name="id_comment" value="<?=$reported['id']?>">
-        <button type="submit" class="btn_reported"><i class="fas fa-times-circle fa-2x" title="Supprimer"></i></button>
-      </form>
-      <form method="POST" action="?action=IgnoreComment" class="form_comnt">
-          <input type="hidden" name="id_comment" value="<?=$reported['id']?>">
-        <button type="submit" class="btn_reported"><i class="fas fa-check-circle fa-2x" title="Ignorer"></i></button>
-      </form>
-    </td>
-  </tr>
-<?php
-}
-?>
+      <?php
+      foreach($reportedComments as $reported)
+      {?>
+        <tr>
+          <td><?=$reported["title_comment"]?></td>
+          <td><?=$reported["content_comment"]?></td>
+          <td class="text-center">
+            <form method="POST" action="?action=DeletReportedComment">
+                <input type="hidden" name="id_comment" value="<?=$reported['id']?>">
+              <button type="submit" class="button-reported"><i class="fas fa-times-circle fa-2x" title="Supprimer"></i></button>
+            </form>
+            <form method="POST" action="?action=IgnoreComment" class="form_comnt">
+                <input type="hidden" name="id_comment" value="<?=$reported['id']?>">
+              <button type="submit" class="button-reported"><i class="fas fa-check-circle fa-2x" title="Ignorer"></i></button>
+            </form>
+          </td>
+        </tr>
+      <?php
+      }
+      ?>
     </table>
   </div>
 </div>  

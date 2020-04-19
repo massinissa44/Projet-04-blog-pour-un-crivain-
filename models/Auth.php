@@ -1,5 +1,5 @@
 <?php
-class Auth {    
+  class Auth {    
     private $username = 'admin';
     private $password = 'forteroche2020';
     private $logged = false;
@@ -22,12 +22,11 @@ class Auth {
       else{
         $result['error'] = true;
         $result['message'] = 'identifiant ou mot de passe incorrect';
-      }
-      
+      }    
       return $result;
     }
 
     public function isLogedIn() {
       return $this->logged;
     }
-}
+  }
