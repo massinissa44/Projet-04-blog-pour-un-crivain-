@@ -8,12 +8,11 @@
         if(ChapterController::CreateChapter($bdd)) {
             header('Location:Index.php?p=home#ancre2');
         }
-        else {
-            ?>
+        else {?>   
             <div class="alert alert-danger" role="alert">    
                 <p>Numéro de chapitre existe déjà, veuillez entrer un nouveau numéro</p>   
             </div> 
-            <?php   
+        <?php   
         }
     }
 ?>

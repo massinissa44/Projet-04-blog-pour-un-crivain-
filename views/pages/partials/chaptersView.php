@@ -2,8 +2,7 @@
 <table class="table table-striped table-dark">
     <?php
         $listChapters = ChapterController::ReadChapter($bdd);
-        foreach ($listChapters as $listChapter) {
-    ?>  
+        foreach ($listChapters as $listChapter) { ?>
             <tbody>							
                 <tr>
                     <td id="ancre2">
@@ -30,5 +29,5 @@
             </tbody>
         <?php
         }
-        ?>
+    ?>
 </table>   

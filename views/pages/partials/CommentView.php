@@ -3,34 +3,34 @@
     <?php
         foreach ($dataCommentChapters as $datas){
             if($datas['reported_count'] >= 5){
-            continue;
+                continue;
             } ?>
-    <div class="carde border-light mb-3">
-        <div class="card-header">
-            <h5><?= htmlspecialchars ($datas['title_comment']);?></h5>
-            <p class="text-secondary date"><?= $datas['created_date'];?></p>
-        </div>
-        <div class="card-body text-secondary">
-            <p class="card-text"><?= htmlspecialchars ($datas['content_comment']);?></p>
-            <div class="icons"> 
-                <?php  
-                    if($Auth->isLogedIn()) {?>
-                        <form method="POST" action="?action=DeletReportedComment" class="form_comnt">
+            <div class="carde border-light mb-3">
+                <div class="card-header">
+                    <h5><?= htmlspecialchars ($datas['title_comment']);?></h5>
+                    <p class="text-secondary date"><?= $datas['created_date'];?></p>
+                </div>
+                <div class="card-body text-secondary">
+                    <p class="card-text"><?= htmlspecialchars ($datas['content_comment']);?></p>
+                    <div class="icons"> 
+                        <?php  
+                            if($Auth->isLogedIn()) {?>
+                                <form method="POST" action="?action=DeletReportedComment" class="form_comnt">
+                                    <input type="hidden" name="id_comment" value="<?=$datas['id']?>">
+                                    <button type="submit" class="button-dlt"><i class="far fa-trash-alt" title="Supprimer"></i></button>
+                                </form>
+                            <?php }
+                        ?>
+                        <form method="POST" action="?action=ReportedComment" class="form_comnt">
                             <input type="hidden" name="id_comment" value="<?=$datas['id']?>">
-                            <button type="submit" class="button-dlt"><i class="far fa-trash-alt" title="Supprimer"></i></button>
+                            <button type="submit" class="button-reported"><i class="fas fa-flag" title="Signaler"></i></button>
                         </form>
-                    <?php }
-                ?>
-                <form method="POST" action="?action=ReportedComment" class="form_comnt">
-                    <input type="hidden" name="id_comment" value="<?=$datas['id']?>">
-                    <button type="submit" class="button-reported"><i class="fas fa-flag" title="Signaler"></i></button>
-                </form>
+                    </div>
+                </div>
             </div>
-        </div>
         <?php }
-        ?>       
-        <button class="btn btn-primary button-comment">Ajouter un commentaire</button>
-    </div>
+    ?>       
+    <button class="btn btn-primary button-comment">Ajouter un commentaire</button>
     <div class="jumbotron hide-comment">
         <form method="POST" action="?action=CreatComment" class="form">
             <div>

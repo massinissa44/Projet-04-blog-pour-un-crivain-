@@ -13,5 +13,11 @@
 </head>
 <?php
 include 'partials/Navbar.php';
-
-
+    if($Auth->isLogedIn()) {
+        $class = "logged";
+    }
+    else {
+        $class = "";
+    }
+?>
+<body class="<?php $class ?>">

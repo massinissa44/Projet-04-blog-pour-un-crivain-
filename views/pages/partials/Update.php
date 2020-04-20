@@ -3,29 +3,24 @@
     selector: '#mytextarea'
     });
 </script>
-    <?php
-        $id = $_GET["id"];
-        $dataChapter = ChapterController::ReadOneChapter($bdd, $id);
-        $dataComment = ChapterController::ReadComment($bdd);
-        $dataCommentChapters = ChapterController::RedChapterComments($bdd, $id);
+<?php
+    $id = $_GET["id"];
+    $dataChapter = ChapterController::ReadOneChapter($bdd, $id);
+    $dataComment = ChapterController::ReadComment($bdd);
+    $dataCommentChapters = ChapterController::RedChapterComments($bdd, $id);
 
-        if(isset($_POST["title"]) && !empty($_POST["title"])){
-            if(ChapterController::UpdateChapter($bdd)){
+    if(isset($_POST["title"]) && !empty($_POST["title"])){
+        if(ChapterController::UpdateChapter($bdd)){
             header("Location: {$_SERVER['HTTP_REFERER']}");
-            }
-            else {
-                ?>
-                <div class="alert alert-danger" role="alert">    
-                    <p>Numéro de chapitre existe déjà, veuillez entrer un nouveau numéro</p>   
-                </div> 
-                <?php   
-            }     
-        } 
-    ?>     
-    <?php
-    foreach ($dataChapter as $data)
-        {
-        ?>
+        }
+        else{ ?>    
+            <div class="alert alert-danger" role="alert">    
+                <p>Numéro de chapitre existe déjà, veuillez entrer un nouveau numéro</p>   
+            </div> 
+        <?php   
+        }     
+    }
+    foreach ($dataChapter as $data){ ?>
         <div class="jumbotron">
             <h2 class="display-3"><?= $data['title'];?></h2>
             <p class="lead"><?= $data['content'];?></p>
@@ -56,9 +51,9 @@
                     <textarea id="mytextarea" name="content" class="form-control" rows="8"><?= htmlspecialchars ($data['content']);?></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary button_updt">Mettre a jour</button> 
-            </form> 
-            <?php } 
-            ?>  
-        </div>    
-        <?php 
-        include 'CommentView.php'?>     
+            </form>
+        </div> 
+    <?php
+    }  
+    ?>             
+<?php include 'CommentView.php'?>
