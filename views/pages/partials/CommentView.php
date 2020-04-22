@@ -31,7 +31,7 @@
         <?php }
     ?>       
     <button class="btn btn-primary button-comment">Ajouter un commentaire</button>
-    <div class="jumbotron hide-comment">
+    <div class="jumbotron form-comment hide-comment">
         <form method="POST" action="?action=CreatComment" class="form">
             <div>
                 <input type="hidden" name="id_chapter" value="<?=$id?>">

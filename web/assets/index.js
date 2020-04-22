@@ -4,13 +4,11 @@ window.onload = function() {
   if(bodyElement.classList.contains("logged")){
     initAdmin();
   }
-
-  initAdmin();
   initComment();
-
+}
   function initAdmin(){
     button_Update = document.querySelector(".button-update");
-    forms_update = document.querySelector(".hide-update");
+    forms_update = document.querySelector(".forms-update");
 
     button_Update.addEventListener("click", () => {
     forms_update.classList.remove("hide-update");
@@ -19,10 +17,9 @@ window.onload = function() {
 
   function initComment(){
     button_Comment = document.querySelector(".button-comment");
-    forms_comment = document.querySelector(".hide-comment");
+    forms_comment = document.querySelector(".form-comment");
 
     button_Comment.addEventListener("click", () => {
     forms_comment.classList.remove("hide-comment");
     });
   }
-}

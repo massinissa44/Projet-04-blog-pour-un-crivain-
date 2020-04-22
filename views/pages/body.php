@@ -1,4 +1,3 @@
-
 <div class="card bg-dark text-white">
     <img class="card-img background_picture"  src="../home.jpg" alt="image de fond">
     <div class="card-img-overlay">
@@ -39,36 +38,45 @@
 <?php } ?>
 <div class="container">
     <?php 
-        if (!isset($_GET["p"]) || empty($_GET["p"])) {
-            header('Location:Index.php?p=home');
-            exit;
-        }       
-        elseif($_GET["p"] ==="home") {
-            include 'partials/ChaptersView.php';
-            if($Auth->isLogedIn()) { ?>
-                <a href="Index.php?p=create#ancre1" class="btn btn-outline-secondary btn-md">
-                    <span class="glyphicon glyphicon-edit"></span>Ajouter un nouveau chapitre
-                </a>
-            <?php 
-            }    
-        }        
-        elseif($_GET["p"] === "login") {
-            include 'partials/Login.php';
-        }
-        elseif($_GET["p"] === "logout") {
-            !$Auth->isLogedIn();   
-            header('Location:Index.php?p=home'); 
-            session_destroy();
-        }        
-        elseif ($_GET["p"] === "create") {   
-            include 'partials/Create.php';
-            $Auth->isLogedIn();
-        }             
-        elseif (isset($_GET['id']) && $_GET['p'] ==="update"){
-            include 'partials/Update.php';  
-        }
-        elseif ($_GET['p'] === "reported"){
-            include 'partials/Reported.php';
+        $page = $_GET["p"];
+        switch ($page){
+            case (!isset($_GET["p"]) || empty($_GET["p"])):
+                header('Location:Index.php?p=home');
+                exit;
+                break;
+            case ("home"):
+                include 'partials/ChaptersView.php';
+                if ($Auth->isLogedIn()) {?>
+                    <a href="Index.php?p=create#ancre1" class="btn btn-outline-secondary btn-md">
+                        <span class="glyphicon glyphicon-edit"></span>Ajouter un nouveau chapitre
+                    </a>
+                <?php
+                }
+                break;
+            case ("login"):
+                include 'partials/Login.php';
+                break;
+            case ("logout"):
+                (!$Auth->isLogedIn());   
+                header('Location:Index.php?p=home'); 
+                session_destroy();        
+                break;
+            case ("create"):
+                include 'partials/Create.php';
+                ($Auth->isLogedIn());
+                break;
+            case ("update"):
+                include 'partials/Update.php';
+                break;
+            case ("reported"):
+                include 'partials/Reported.php';
+                break;
+            case ("not-found"):
+                include 'partials/Not-found.php';
+                break;
+            default: 
+                header('Location:Index.php?p=not-found');   
+                break;
         }
     ?>
 </div>

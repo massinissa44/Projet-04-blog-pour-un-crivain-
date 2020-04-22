@@ -15,7 +15,7 @@
       <!-- Login Form -->
       <form action="" method="POST" style='margin-top: 40px'> 
         <input type="text" id="login" class="fadeIn second inpt" name="username" placeholder="Username">
-        <input type="text" id="password" class="fadeIn second inpt" name="password" placeholder="Password">
+        <input type="password" id="password" class="fadeIn second inpt" name="password" placeholder="Password">
         <input type="submit" class="fadeIn fourth">
       </form>
     </div>

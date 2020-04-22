@@ -29,7 +29,7 @@
             <?php } ?>
             <hr class="my-4">
         </div>
-        <div class="jumbotron hide-update">
+        <div class="jumbotron forms-update hide-update">
             <form method="POST" action="" class="form">
                 <div>
                     <input value ="<?= $id;?>" type="hidden" name="id" class="form-control" >
